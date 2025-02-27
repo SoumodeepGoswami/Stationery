@@ -1,0 +1,66 @@
+{% extends 'base/index.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+<div class="form-container segment">
+    <form method="post" enctype="multipart/form-data">
+        <h2>Update Stationery Item</h2>
+
+        <div class="form-element django-message">
+        {% csrf_token %}
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+        {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+            </li>
+        {% endfor %}
+        </div>
+        
+        <div class="form-element">
+            <div class="form-left">
+                <label for="stationery_item_name">Name:</label>
+            </div>
+            <div class="form-right">
+                <input type="text" name="stationery_item_name" id="stationery_item_name" value="{{stationery_item.name}}" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-left">
+                <label for="stationery_item_description">Description:</label>
+            </div>
+            <div class="form-right">
+                <input type="text" name="stationery_item_description" id="stationery_item_description" value="{{stationery_item.description}}" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-right">
+                <label for="stationery_item_quantity">Quantity:</label>
+            </div>
+            <div class="form-left">
+                <input type="number" name="stationery_item_quantity" id="stationery_item_quantity" value="{{stationery_item.quantity}}" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-left">
+                <label for="stationery_item_image" class="form-label">Image</label>
+            </div>
+            <div class="form-right">
+                <input type="file" class="form-control" name="stationery_item_image">
+            </div>
+          </div>
+
+        <div class="form-element">
+            <button type="submit" class="form-submit-button">Update Stationery Item</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

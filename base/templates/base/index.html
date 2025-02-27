@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SG Stationery - {% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'base/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'base/css/common_classes.css' %}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            {% if request.user.is_authenticated %}
+                <p><a href="/stationery_items/">SG Stationery</a></p>
+            {% else %}
+                <p><a href="/">SG Stationery</a></p>
+            {% endif %}
+        </div>
+        <div class="nav-links">
+            <ul class="navbar-links">
+                {% block nav-links %}{% endblock %}
+                <li>
+                  {% if request.user.is_authenticated %}
+                  <a href="/users/logout/">Logout</a>
+                  {% else %}
+                  <a href="/users/login/">Login</a>
+                  {% endif %}
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% block body %}{% endblock %}
+    <script src="{% static 'base/js/script.js' %}"></script>
+</body>
+</html>

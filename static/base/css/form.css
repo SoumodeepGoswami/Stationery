@@ -1,0 +1,51 @@
+.form-container{
+    border: 2px solid white;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    margin: auto;
+    padding: 2em;
+    width: 50vw;
+}
+
+.form-container h2{
+    text-align: center;
+}
+
+.form-element{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.form-left{
+    width: 50%;
+}
+
+.form-right{
+    width: 50%;
+}
+
+.form-element input, textarea{
+    border: 1px solid white;
+    height: 5vh;
+    width: 20vw;
+    border-radius: 2em;
+    padding: 0.2em;
+}
+
+.form-submit-button{
+    font-size: 1.2rem;
+    padding: 0.51em;
+    border: 1px solid white;
+    border-radius: 2em;
+    cursor: pointer;
+}
+
+form h2{
+    font-size: 1.6rem;
+}

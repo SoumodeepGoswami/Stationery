@@ -1,0 +1,89 @@
+{% extends 'base/index.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block head %}
+
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+<div class="form-container segment">
+    <form method="post">
+        <h2>Register</h2>
+        {% csrf_token %}
+
+        <div class="form-element django-message" id="django-message">
+            {% csrf_token %}
+            {% for message in messages %}
+                <li class="{{ message.tags }}">
+            {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+                </li>
+            {% endfor %}
+        </div>
+
+        <div class="form-element">
+            <div class="form-left">
+                <label for="username">Username:</label>
+            </div>
+            <div class="form-right">
+                <input type="text" name="username" id="username" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-left">
+                <label for="first_name">First Name:</label>
+            </div>
+            <div class="form-right">
+                <input type="text" name="first_name" id="first_name" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-left">
+                <label for="last_name">First Name:</label>
+            </div>
+            <div class="form-right">
+                <input type="text" name="last_name" id="last_name" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-right">
+                <label for="email">Email:</label>
+            </div>
+            <div class="form-left">
+                <input type="email" name="email" id="email" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-right">
+                <label for="password">Password:</label>
+            </div>
+            <div class="form-left">
+                <input type="password" name="password" id="password" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-right">
+                <label for="confirmation_password">Confirm Password:</label>
+            </div>
+            <div class="form-left">
+                <input type="password" name="confirmation_password" id="confirmation_password" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <button type="submit" class="form-submit-button">Register</button>
+        </div>
+
+        <div class="form-element">
+            <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+</div>
+</form>
+{% endblock %}

@@ -1,0 +1,52 @@
+/* Navbar Code */
+
+nav{
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+}
+
+.logo{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.logo img{
+    width: calc(100% - 55%);
+}
+
+.logo p{
+    margin-left: 10%;
+    width: calc(100% - 60%);
+}
+
+.nav-links{
+    height: 100%;
+    width: calc(100% - 50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-links{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navbar-links li{
+    cursor: pointer;
+    list-style: none;
+    margin-right: 1.2rem;
+    font-size: 1.2rem;
+}

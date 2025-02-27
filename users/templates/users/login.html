@@ -1,0 +1,61 @@
+{% extends 'base/index.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block head %}
+
+{% load static %}
+
+{% endblock %}
+
+{% block body %}
+<div class="form-container segment">
+    <form method="post">
+        <h2>Login</h2>
+
+        <div class="form-element django-message" id="django-message">
+        {% csrf_token %}
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+        {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+            </li>
+        {% endfor %}
+        </div>
+        
+        <div class="form-element">
+            <div class="form-left">
+                <label for="username">Username:</label>
+            </div>
+            <div class="form-right">
+                <input type="text" name="username" id="username" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-right">
+                <label for="password">Password:</label>
+            </div>
+            <div class="form-left">
+                <input type="password" name="password" id="password" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <div class="form-right">
+                <label for="confirmation_password">Confirm Password:</label>
+            </div>
+            <div class="form-left">
+                <input type="password" name="confirmation_password" id="confirmation_password" required>
+            </div>
+        </div>
+
+        <div class="form-element">
+            <button type="submit" class="form-submit-button">Login</button>
+        </div>
+
+        <div class="form-element">
+            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+        </div>
+</div>
+</form>
+{% endblock %}

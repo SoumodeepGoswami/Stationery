@@ -1,0 +1,71 @@
+{% extends 'base/index.html' %}
+
+{% block title %}Your Stationery Items{% endblock %}
+
+{% block nav-links %}
+<a href="add-item" class="btn" style="color: white;">Add Stationery Item</a>
+<li>Stationery Items = {{ stationery_item_count }}</li>
+{% endblock %}
+
+{% block head %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'stationery_items/css/style.css' %}">
+
+{% endblock %}
+
+{% block body %}
+
+<div class="message_container django-message" id="django-message">
+    {% for message in messages %}
+    <li>
+        {{ message }}
+    </li>
+    {% endfor %}
+</div>
+
+{% if stationery_items %}
+
+
+<!-- Search Form -->
+<div class="search">
+    <form method="get" class="search_box">
+        <input type="text" name="search" class="form-control">
+
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a href="{% url 'stationery_items_index' %}" class="btn">Refresh</a>
+    </form>
+</div>
+
+<div class="main_container">
+    {% if stationery_items %}
+
+    {% for stationery_item in stationery_items %}
+    <div class="stationery">
+        <div class="details">
+            <p class="element">Name: {{stationery_item.name}}</p>
+            <p class="element">Description: {{stationery_item.description}}</p>
+            <p class="element">Quantity: {{stationery_item.quantity}}</p>
+        </div>
+
+        <div class="actions">
+            <a href="/media/{{stationery_item.image}}" class="btn">View Image</a>
+            <a href="update-item/{{ stationery_item.id }}" class="btn">Update Item</a>
+            <a href="delete-item/{{ stationery_item.id }}" class="btn">Delete Item</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% else %}
+
+        <p class="no_items">No Match Found</p>
+
+    {% endif %}
+</div>
+{% else %}
+
+<p class="no_items">You haven't saved any stationery item. <a href="add-item/">Add an item</a></p>
+
+{% endif %}
+{% endblock %}
