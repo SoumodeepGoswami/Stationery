@@ -1,0 +1,128 @@
+{% extends 'home/base.html' %}
+
+{% block title %}SG Goods - All Goods{% endblock %}
+
+{% block head %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'goods_of_home/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'goods_of_home/js/script.js' %}">
+
+{% endblock %}
+
+{% block body %}
+    <div class="message_container">
+        {% for message in messages %}
+                <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
+        {% endfor %}
+    </div>
+
+    <p class="good_count">Number of Goods = {{goods_count}}</p>
+
+    <div class="page_actions">
+        <a href="add-good" class="btn btn-primary" style="color: white;">Add Good</a>
+    </div>
+
+
+    <!-- Search Form -->
+    <div class="container" style="margin-top: 2%;">
+        <form method="get" class="form-inline mb-3 search_box">
+            <div class="form-group flex-grow-1 mr-2 search_div">
+                <input type="text" name="search" class="form-control" placeholder="Category Name" class="category_name">
+                <input type="text" name="search" class="form-control" placeholder="Search Goods" class="search_goods">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a href="{% url 'goods_home' %}" class="btn btn-primary">Refresh</a>
+        </form>
+    </div>
+
+    <div class="computer">
+        {% if Goods %}
+            <div class="main_container">
+                <!-- Section for Goods -->
+                <div class="goods_section">
+                    <!-- Left Column -->
+                    <div class="left">
+                        {% for good in Goods %}
+                            {% if forloop.counter <= column_goods %}
+                            <div class="good">
+                                <div class="good_details">
+                                    <p class="good_name">Name: {{ good.good_name }}</p>
+                                    <p class="good_description">Description: {{ good.good_description }}</p>
+                                    <p class="good_location">Location: {{ good.good_location }}</p>
+                                    <p class="good_collection">Category: {{ good.good_collection }}</p>
+                                    <p class="good_actions">
+                                        <a href="update-good/{{ good.id }}" class="btn btn-primary">Update Good</a>
+                                        <a href="delete-good/{{ good.id }}" class="btn btn-danger">Delete Good</a>
+                                    </p>
+                                </div>
+                                <div class="good_image">
+                                    <img src="/media/{{ good.good_image }}" alt="Good Image">
+                                    <a href="/media/{{good.good_image}}" class="btn btn-primary">View Image</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="right">
+                        {% for good in Goods %}
+                            {% if forloop.counter > column_goods %}
+                            <div class="good">
+                                <div class="good_details">
+                                    <p class="good_name">Name: {{ good.good_name }}</p>
+                                    <p class="good_description">Description: {{ good.good_description }}</p>
+                                    <p class="good_location">Location: {{ good.good_location }}</p>
+                                    <p class="good_collection">Category: {{ good.good_collection }}</p>
+                                    <p class="good_actions">
+                                        <a href="update-good/{{ good.id }}" class="btn btn-primary">Update Good</a>
+                                        <a href="delete-good/{{ good.id }}" class="btn btn-danger">Delete Good</a>
+                                    </p>
+                                </div>
+                                <div class="good_image">
+                                    <img src="/media/{{ good.good_image }}" alt="Good Image">
+                                    <a href="/media/{{good.good_image}}" class="btn btn-primary" target="_blank">View Image</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p class="match_not_found">No Match Found</p>
+        {% endif %}
+    </div>
+
+    <div class="mobile">
+        <div class="main_container">
+            {% if Goods %}
+                {% for good in Goods %}
+                    <div class="good">
+                        <div class="good_details">
+                            <p class="good_name">Name: {{ good.good_name }}</p>
+                            <p class="good_description">Description: {{ good.good_description }}</p>
+                            <p class="good_location">Location: {{ good.good_location }}</p>
+                            <p class="good_collection">Category: {{ good.good_collection }}</p>
+                            <p class="good_actions">
+                                <a href="update-good/{{ good.id }}" class="btn btn-primary">Update Good</a>
+                                <a href="delete-good/{{ good.id }}" class="btn btn-danger">Delete Good</a>
+                            </p>
+                        </div>
+                        <div class="good_image">
+                            <img src="/media/{{ good.good_image }}" alt="Good Image">
+                            <a href="/media/{{good.good_image}}" class="btn btn-primary">View Image</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+
+                <p class="match_not_found">No Match Found</p>
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

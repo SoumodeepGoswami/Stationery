@@ -1,0 +1,64 @@
+/* Default Settings */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar Styles */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
+.navbar-links {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.navbar-links li {
+    list-style: none;
+    padding: 0 1vmax;
+    align-items: center;
+}
+
+.navbar-links li a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Table Styles */
+
+table, th, td{
+    border: 1px solid black;
+}
+
+nav ul li a{
+    font-size: 125%;
+}
+
+.search_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_box button{
+    margin-left: 2%;
+}
+
+.search_box a{
+    margin-left: 1%;
+}
+
+@media (max-width: 600px) {
+    .form{
+        width: 100% !important;
+    }
+}

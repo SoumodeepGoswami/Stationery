@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+
+{% block title %}SG Goods - Login{% endblock %}
+
+
+{% block body %}
+
+<div class="container">
+  <form class="col-6 mx-auto card p-3 shadow-lg m-3 form" method="POST">
+    {% csrf_token %}
+
+    <h1 class="m-3">Login</h1>
+
+    {% for message in messages %}
+      <div class="alert alert-primary" role="alert">
+          {{ message }}
+      </div>
+    {% endfor %}
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+      </div>
+
+      <button class="btn btn-success" type="submit">Submit Your Credentials</button>
+      <p class="m-3">Don't have an account <a href="{% url 'register-page' %}">Register</a></p>
+  </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block title %}SG Goods - Home App{% endblock %}
+
+{% block body %}
+
+{% for message in messages %}
+<div class="alert alert-primary" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
+
+<a href="{% url 'goods_home' %}" class="btn btn-primary m-3">Go to goods app</a>
+<a href="{% url 'users_home' %}" class="btn btn-primary m-3">Go to users app</a>
+
+{% endblock %}

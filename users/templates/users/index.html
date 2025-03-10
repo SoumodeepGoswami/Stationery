@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+
+{% block title %}SG Goods - Login/Register/Logout{% endblock %}
+
+{% block head %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'users/css/style.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="actions">
+    <p class="text">What do you want to do from the options below ?</p>
+
+    <div class="links">
+        <p><a href="{% url 'register-page' %}" class="btn btn-primary">Register a account</a></p>
+        <p><a href="{% url 'login-page' %}" class="btn btn-primary">Login to your account</a></p>
+        <p><a href="{% url 'logout-page' %}" class="btn btn-primary">Logout from your account</a></p>
+    </div>
+</div>
+
+{% endblock %}

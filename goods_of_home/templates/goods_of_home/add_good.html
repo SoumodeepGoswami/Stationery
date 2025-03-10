@@ -1,0 +1,44 @@
+{% extends 'home/base.html' %}
+
+{% block title %}SG Goods - Add Good{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+  <form class="col-6 mx-auto card p-3 shadow-lg m-3 form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1 class="m-3">Add Good</h1>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Good Name</label>
+      <input type="text" required class="form-control" name="good_name">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Good Description</label>
+      <textarea class="form-control" required name="good_description"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Good Location</label>
+      <textarea class="form-control" required name="good_location"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Good Category</label>
+      <input type="text" required class="form-control" name="good_collection">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Good Image</label>
+      <input type="file" class="form-control" name="good_image">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Good</button>
+  </form>
+
+  <a href="{% url 'goods_home' %}" class="btn btn-primary m-3">See all Goods</a>
+</div>
+
+{% endblock %}
